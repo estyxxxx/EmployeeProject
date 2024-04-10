@@ -30,3 +30,9 @@
     display: flex;
     margin: 32px 0;
   }
+  .mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+  }
+  app-edit-employee{
+    width: 10px;
+  }

@@ -45,7 +45,7 @@ export class EditEmployeeComponent {
   saveEvent: EventEmitter<void> = new EventEmitter<void>();
   
   constructor(
-    private employeeService: EmployeeService, private roleService: RoleService, private roleTypeService: RoleTypeService
+    private employeeService: EmployeeService, private roleService: RoleService, private roleTypeService: RoleTypeService, private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -129,10 +129,21 @@ export class EditEmployeeComponent {
   }
   addRole() {
     this.isRoleOpen = true;
+    const dialogRef = this.dialog.open(AddRoleComponent, {
+      width: '500px',
+      // [types]="types" [employeeId]="employee?.id || 0" (saveEvent)="saveRole()
+      data: { types: this.types, employeeId: this.employee?.id || 0 }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.saveRole()
+
+    });
   }
   saveRole() {
     this.isRoleOpen = false;
-    console.log("save role accured");
+
+
   }
 }
 

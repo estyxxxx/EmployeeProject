@@ -1,13 +1,22 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { EmployeeService } from '../services/employee.service';
 import { RoleType } from '../entities/roleType.model';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-add-role',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatSlideToggleModule, MatButtonModule, MatNativeDateModule, MatSelectModule, MatNativeDateModule],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.css'
 })
@@ -15,19 +24,24 @@ export class AddRoleComponent {
   addForm!: FormGroup;
   tempIsManager = true;
   isClicked: boolean = false;
-
-  @Input()
-  employeeId!: number;
-  @Input()
-  types: RoleType[] = [];
+  types!: RoleType[]; 
+  employeeId!: number
+  // @Input()
+  // employeeId!: number;
+  // @Input()
+  // types: RoleType[] = [];
   
   @Output()
   saveEvent: EventEmitter<void> = new EventEmitter<void>();
   
   constructor(
-    private employeeService: EmployeeService
-  ) { }
-
+    private employeeService: EmployeeService, public dialogRef: MatDialogRef<AddRoleComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: { types: RoleType[], employeeId: number }
+   ) { 
+    this.types = this.data.types;
+    this.types = this.data.types;
+}
+  
   ngOnInit() {
     this.addForm = new FormGroup({
       roleTypeId: new FormControl('', Validators.required),
@@ -43,10 +57,12 @@ export class AddRoleComponent {
         this.tempIsManager = false;
       this.employeeService.addRole(this.addForm.controls['roleTypeId'].value, this.addForm.controls['entryDate'].value, this.tempIsManager, this.employeeId);
       console.log("add role", this.employeeService.roles);
-      this.saveEvent.emit();
+      //this.saveEvent.emit();
     }
+    this.dialogRef.close();
   }
   cancel() {
-    this.saveEvent.emit();
+    //this.saveEvent.emit();
+    this.dialogRef.close();
   }
 }
