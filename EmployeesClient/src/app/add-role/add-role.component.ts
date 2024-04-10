@@ -5,10 +5,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatButtonModule } from '@angular/material/button';
-import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { EmployeeService } from '../services/employee.service';
 import { RoleType } from '../entities/roleType.model';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-add-role',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatSlideToggleModule, MatButtonModule, MatNativeDateModule, MatSelectModule, MatNativeDateModule],
+  imports: [CommonModule, ReactiveFormsModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatSelectModule],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.css'
 })

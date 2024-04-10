@@ -1,17 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
-import {MatRadioModule} from '@angular/material/radio';
 import Swal from 'sweetalert2';
 import { EmployeeService } from '../services/employee.service';
 import { AddRoleComponent } from '../add-role/add-role.component';
@@ -24,7 +19,7 @@ import { RoleType } from '../entities/roleType.model';
 @Component({
   selector: 'app-edit-employee',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AddRoleComponent,  MatTableModule, MatButtonModule, MatIconModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatSelectModule, MatExpansionModule, MatRadioModule],
+  imports: [CommonModule, ReactiveFormsModule, AddRoleComponent, MatInputModule, MatFormFieldModule, MatSelectModule, MatExpansionModule],
   templateUrl: './edit-employee.component.html',
   styleUrl: './edit-employee.component.css'
 })
@@ -38,15 +33,20 @@ export class EditEmployeeComponent {
   roles: Role[] = [];
   types: RoleType[] = [];
   filteredTypes: RoleType[] = [];
-  @Input()
+  // @Input()
   employee?: Employee;
 
   @Output()
   saveEvent: EventEmitter<void> = new EventEmitter<void>();
   
   constructor(
-    private employeeService: EmployeeService, private roleService: RoleService, private roleTypeService: RoleTypeService, private dialog: MatDialog
-  ) { }
+    private employeeService: EmployeeService, private roleService: RoleService, private roleTypeService: RoleTypeService, private dialog: MatDialog,
+    public dialogRef: MatDialogRef<EditEmployeeComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: { employee: Employee }
+  ) { 
+    this.employee = this.data.employee;
+  }
+
 
   ngOnInit() {
     this.getTypes();
@@ -122,28 +122,25 @@ export class EditEmployeeComponent {
           console.error('Error occurred while updating employee:', error);
         }
       );
+      this.dialogRef.close();
     }
   }
   cancel() {
     this.saveEvent.emit();
+    this.dialogRef.close();
   }
   addRole() {
     this.isRoleOpen = true;
     const dialogRef = this.dialog.open(AddRoleComponent, {
       width: '500px',
-      // [types]="types" [employeeId]="employee?.id || 0" (saveEvent)="saveRole()
       data: { types: this.types, employeeId: this.employee?.id || 0 }
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      this.saveRole()
-
+      this.saveRole();
     });
   }
   saveRole() {
     this.isRoleOpen = false;
-
-
   }
 }
 

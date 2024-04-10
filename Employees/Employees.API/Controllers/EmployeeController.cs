@@ -68,6 +68,7 @@ namespace Employees.API.Controllers
         }
 
         [HttpPut("{id}/isActive")]
+        [Authorize]
         public async Task<ActionResult> Put(int id, bool isActive)
         {
             Employee employeeToUpdate = _employeeService.GetByIdAsync(id).Result;

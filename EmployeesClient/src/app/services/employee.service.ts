@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { Employee } from "../entities/employee.model";
@@ -24,11 +24,14 @@ export class EmployeeService {
   getEmployeeById(id: number): Observable<Employee> {
     return this.http.get<Employee>(`https://localhost:7272/api/Employee/${id}`);
   }
-  updateActivity(employee: Employee, isActive: boolean): Observable<void> {
+  updateActivity(employee: Employee): Observable<void> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
     if (employee.id == null)
         employee.id = 0;
     const url = `https://localhost:7272/api/Employee/${employee.id}/isActive`;
-    return this.http.put<void>(url, employee);
+    return this.http.put<void>(url, employee, { headers });
   }
   updateEmployee(id: Number, firstName : string, lastName : string, identityNumber: number, startDate: Date, dateOfBirth: Date, isFemale: Boolean): Observable<void> {
     const employee = {

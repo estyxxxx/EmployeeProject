@@ -155,3 +155,4 @@ C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.API\obj\D
 C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.API\obj\Debug\net8.0\Employees.API.genruntimeconfig.cache
 C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.API\obj\Debug\net8.0\ref\Employees.API.dll
 C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.API\obj\Debug\net8.0\Employees.API.sourcelink.json
