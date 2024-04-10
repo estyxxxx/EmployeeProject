@@ -1,0 +1,17 @@
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\bin\Debug\net8.0\Employees.Data.deps.json
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\bin\Debug\net8.0\Employees.Data.runtimeconfig.json
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\bin\Debug\net8.0\Employees.Data.dll
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\bin\Debug\net8.0\Employees.Data.pdb
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\bin\Debug\net8.0\Employees.Core.dll
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\bin\Debug\net8.0\Employees.Core.pdb
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.csproj.AssemblyReference.cache
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.AssemblyInfoInputs.cache
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.AssemblyInfo.cs
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employee.6F4A7F82.Up2Date
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.dll
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\refint\Employees.Data.dll
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.pdb
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\Employees.Data.genruntimeconfig.cache
+C:\Users\user\Documents\תכנות\EmployeeProject\Employees\Employees.Data\obj\Debug\net8.0\ref\Employees.Data.dll

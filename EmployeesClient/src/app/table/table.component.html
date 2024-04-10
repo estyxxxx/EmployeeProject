@@ -1,0 +1,22 @@
+<form [formGroup]="filterForm">
+  <mat-form-field>
+    <input matInput formControlName="search" placeholder="Search">
+  </mat-form-field>
+</form>
+<button class="button-5" role="button" (click)="exportToExcel()">Export to Excel</button>
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>ID</th>
+      <th>Start Date</th>
+      <th *ngIf="isLogin" >Edit</th>
+      <th *ngIf="isLogin" >Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr app-employee-row *ngFor="let employee of filteredEmployees" [employee]="employee"  [isLogin]="isLogin">
+    </tr>
+  </tbody>
+</table>

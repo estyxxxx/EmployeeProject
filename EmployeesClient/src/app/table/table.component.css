@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background-color: #a0a0a0;
+  }

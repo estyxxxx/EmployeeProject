@@ -1,0 +1,23 @@
+.mat-toolbar {
+    background-color: #a0a0a0;
+    color: white;
+  }
+  
+  .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .mat-raised-button {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .mdc-button__label {
+    color: white;
+}

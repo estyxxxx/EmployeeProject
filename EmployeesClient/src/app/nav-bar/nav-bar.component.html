@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <span class="brand">Manpower</span>
+    <span class="spacer"></span>
+    <button mat-raised-button class="button-5" (click)="login()" *ngIf="!isLogin" [disabled]="isLoginOpen">Login</button>
+    <button mat-raised-button class="button-5" (click)="logout()" *ngIf="isLogin">Logout</button>
+    <!-- <div class="addOrEdit-employee-overlay" *ngIf="isLoginOpen"> -->
+    <div class="addOrEdit-employee-overlay" *ngIf="isLoginOpen">
+        <app-login (saveEvent)="saveLogin()" />
+    </div>
+</mat-toolbar>

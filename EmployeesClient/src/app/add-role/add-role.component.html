@@ -1,0 +1,31 @@
+<form [formGroup]="addForm" (ngSubmit)="save()" class="the-form">
+    <div class="form-group">
+        <select formControlName="roleTypeId">
+            <option *ngFor="let role of types" [value]="role.id">{{ role.type }}</option>
+        </select>
+        <ng-container *ngIf="isClicked && addForm.controls['roleTypeId'].errors as roleTypeIdError">
+            <p class="error-message" *ngIf="roleTypeIdError['required']">Please select a role type</p>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" placeholder="Entry Date" formControlName="entryDate">
+        <ng-container *ngIf="isClicked && addForm.controls['entryDate'].errors as entryDateError">
+            <p class="error-message" *ngIf="entryDateError['required']">This field is required</p>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label>Manager:</label><br>
+        <label>
+            <input type="radio" formControlName="isManager" [value]="0"> Yes
+        </label>
+        <br />
+        <label>
+            <input type="radio" formControlName="isManager" [value]="1"> No
+        </label>
+        <ng-container *ngIf="isClicked && addForm.controls['isManager'].errors as isManagerError">
+            <p class="error-message" *ngIf="isManagerError['required']">Please select</p>
+        </ng-container>
+    </div>
+    <button type="submit" class="button-5">Save Changes</button>
+    <button type="button" (click)="cancel()" class="button-5">Cancel</button>
+</form>
