@@ -49,18 +49,17 @@
     <button type="submit" class="button-5">Save Changes</button>
     <button type="button" (click)="cancel()" class="button-5">Cancel</button>
 </form> -->
-<form [formGroup]="editForm" (ngSubmit)="save()" class="mat-elevation-z4 form-container">
+<form [formGroup]="editForm" (ngSubmit)="save()" class="the-form">
     <div mat-dialog-content>
-        <div class="form-group">
             <div class="form-row">
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="form-control">
                     <mat-label>firstName</mat-label>
                     <input matInput formControlName="firstName">
                 </mat-form-field>
                 <ng-container *ngIf="isClicked && editForm.controls['firstName'].errors as firstNameError">
                     <p class="error-message" *ngIf="firstNameError['required']">This field is required</p>
                 </ng-container>
-                <mat-form-field class="example-full-width">
+                <mat-form-field class="form-control">
                     <mat-label>Last Name</mat-label>
                     <input matInput formControlName="lastName">
                 </mat-form-field>
@@ -68,14 +67,13 @@
                     <p class="error-message" *ngIf="lastNameError['required']">This field is required</p>
                 </ng-container>
             </div>
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="form-control">
                 <mat-label>Identity Number</mat-label>
                 <input matInput formControlName="identityNumber">
             </mat-form-field>
             <ng-container *ngIf="isClicked && editForm.controls['identityNumber'].errors as identityNumberError">
                 <p class="error-message" *ngIf="identityNumberError['required']">This field is required</p>
-                <p class="error-message" *ngIf="identityNumberError['pattern']">This field must be exactly 9 characters
-                    long
+                <p class="error-message" *ngIf="identityNumberError['pattern']">This field must be exactly 9 characters long
                 </p>
             </ng-container>
             <div class="form-row">
@@ -96,7 +94,6 @@
             <ng-container *ngIf="isClicked && editForm.controls['isFemale'].errors as isFemaleError">
                 <p class="error-message" *ngIf="isFemaleError['required']">Please select a gender</p>
             </ng-container>
-        </div>
         <div *ngFor="let type of filteredTypes">
             <p>{{type.type}}</p>
         </div>

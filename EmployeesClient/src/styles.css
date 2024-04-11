@@ -1,48 +1,52 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .addOrEdit-employee-overlay {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    max-height: calc(100vh - 40px);
-    overflow-y: auto;
-    width: 70vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  width: 70vw;
 }
 
 button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  outline: none;
 }
 
 .the-form {
-    max-width: 500px;
-    margin: auto;
-    padding: 50px;
+  max-width: 500px;
+  padding: 25px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+}
+
+.form-row{
+  display: flex;
+  margin: 32px 0;
 }
 
 .error-message {
-    color: #dc3545;
-    margin-top: 5px;
-    font-size: 14px;
+  color: #dc3545;
+  margin-top: 5px;
+  font-size: 14px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .button-5 {
     align-items: center;
