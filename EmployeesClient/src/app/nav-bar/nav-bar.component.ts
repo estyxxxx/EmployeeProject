@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -12,19 +13,26 @@ import { LoginComponent } from '../login/login.component';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  isLoginOpen = false;
   isLogin!: Boolean;
 
   ngOnInit() {
     this.isLogin = localStorage.getItem('isLogin') === 'true';
   }
+  constructor(
+    private dialog: MatDialog
+  ) { }
+  
   login()
   {
-    this.isLoginOpen = true;
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '500px'
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.saveLogin();
+    });
   }
   saveLogin()
   {
-    this.isLoginOpen = false;
     this.isLogin = Boolean(localStorage.getItem('isLogin'));
     window.location.reload();
   }

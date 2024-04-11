@@ -1,39 +1,15 @@
-<!-- <form [formGroup]="addTypeForm" (ngSubmit)="save()" class="the-form">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Role Type" formControlName="roleType">
-        <ng-container *ngIf="addTypeForm.controls['roleType'].errors as roleTypeError">
+<form [formGroup]="addTypeForm" (ngSubmit)="save()" class="the-form">
+    <div mat-dialog-content>
+        <mat-form-field class="form-control">
+            <mat-label>Role Type</mat-label>
+            <input matInput formControlName="roleType">
+        </mat-form-field>
+        <ng-container *ngIf="isClicked && addTypeForm.controls['roleType'].errors as roleTypeError">
             <p class="error-message" *ngIf="roleTypeError['required']">This field is required</p>
         </ng-container>
     </div>
-    <button type="submit" class="button" [disabled]="!addTypeForm.valid">Save Changes</button>
-    <button type="button" (click)="cancel()" class="button">Cancel</button>
-</form> -->
-<div class="body">
-  <div class="container">
-      <div class="text">Add Type</div>
-      <form [formGroup]="addTypeForm" (ngSubmit)="save()">
-          <div class="form-row">
-              <div class="input-data">
-                  <input type="text" formControlName="roleType">
-                  <div class="underline"></div>
-                  <label for="">Role Type</label>
-                  <ng-container *ngIf="addTypeForm.controls['roleType'].errors as roleTypeError">
-                    <p class="error-message" *ngIf="roleTypeError['required']">This field is required</p>
-                </ng-container>
-              </div>
-          </div>
-          <div class="form-row btn">
-              <div class="input-data">
-                  <div class="inner"></div>
-                  <input type="submit" id="btn2" value="Login">
-              </div>
-          </div>
-          <div class="form-row btn">
-              <div class="input-data">
-                  <div class="inner"></div>
-                  <input type="button" (click)="cancel()" id="btn2" value="Cancel">
-              </div>
-          </div>
-      </form>
-  </div>
-</div>
+    <div mat-dialog-actions>
+        <button type="submit" class="button-5">Save Changes</button>
+        <button (click)="cancel()" class="button-5">Cancel</button>
+    </div>
+</form>

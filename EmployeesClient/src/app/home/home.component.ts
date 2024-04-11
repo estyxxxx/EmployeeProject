@@ -15,8 +15,6 @@ import { Employee } from '../entities/employee.model';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent {
-  isOpen = false;
-  isTypeOpen = false;
   isLogin!: Boolean;
 
   ngOnInit() {
@@ -28,25 +26,15 @@ export class HomeComponent {
   ) { }
 
   addEmployee() {
-    this.isOpen = true;
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
       width: '500px',
       data: { employee: Employee }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.saveAddEmployee();
-    });
-  }
-  saveAddEmployee(): void {
-    this.isOpen = false; 
   }
   addRoleType()
   {
-    this.isTypeOpen = true;
-  }
-  saveTypeRole()
-  {
-    this.isTypeOpen = false;
+    const dialogRef = this.dialog.open(AddRoleTypeComponent, {
+      width: '500px'
+    });
   }
 }

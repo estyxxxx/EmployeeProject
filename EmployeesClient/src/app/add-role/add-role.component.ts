@@ -2,17 +2,16 @@ import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { EmployeeService } from '../services/employee.service';
 import { RoleType } from '../entities/roleType.model';
-import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-add-role',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.css'
 })
@@ -45,8 +44,8 @@ export class AddRoleComponent {
       if (this.addForm.controls['isManager'].value == 1)
         this.tempIsManager = false;
       this.employeeService.addRole(this.addForm.controls['roleTypeId'].value, this.addForm.controls['entryDate'].value, this.tempIsManager, this.employeeId);
+      this.dialogRef.close();
     }
-    this.dialogRef.close();
   }
   cancel() {
     this.dialogRef.close();

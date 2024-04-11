@@ -29,10 +29,7 @@ export class EmployeeRowComponent {
     employee.isActive = false;
     this.employeeService.updateActivity(employee).subscribe(
       () => {
-        Swal.fire({
-          title: "A deletion has occurred",
-          text: `Employee ${employee.id} deleted successfully!`,
-          icon: "success"
+        Swal.fire({ title: "A deletion has occurred", text: `Employee ${employee.id} deleted successfully!`, icon: "success"
         });
         this.employeeService.refreshEmployee();
       },

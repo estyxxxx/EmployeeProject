@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { RoleTypeService } from '../services/role-type.service';
 
 @Component({
   selector: 'app-add-role-type',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './add-role-type.component.html',
   styleUrl: './add-role-type.component.css'
 })
@@ -16,11 +19,8 @@ export class AddRoleTypeComponent {
   addTypeForm!: FormGroup;
   isClicked: boolean = false;
 
-  @Output()
-  saveEvent: EventEmitter<void> = new EventEmitter<void>();
-
   constructor(
-    private roleTypeService: RoleTypeService
+    private roleTypeService: RoleTypeService, public dialogRef: MatDialogRef<AddRoleTypeComponent>
   ) { }
 
   ngOnInit() {
@@ -35,20 +35,17 @@ export class AddRoleTypeComponent {
       const roleType = this.addTypeForm.controls['roleType'].value;
       this.roleTypeService.addType(roleType).subscribe(
         () => {
-          Swal.fire({
-            title: "Done!",
-            text: "Role Type added successfully!",
-            icon: "success"
+          Swal.fire({ title: "Done!", text: "Role Type added successfully!", icon: "success"
           });
-          this.saveEvent.emit();
         },
         (error) => {
           console.error('Error occurred while add role type:', error);
         }
       );
+      this.dialogRef.close();
     }
   }
   cancel() {
-    this.saveEvent.emit();
+    this.dialogRef.close();
   }
 }

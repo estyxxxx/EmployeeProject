@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -19,7 +18,7 @@ import { RoleType } from '../entities/roleType.model';
 @Component({
   selector: 'app-edit-employee',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AddRoleComponent, MatInputModule, MatFormFieldModule, MatSelectModule, MatExpansionModule],
+  imports: [CommonModule, ReactiveFormsModule, AddRoleComponent, MatInputModule, MatFormFieldModule, MatSelectModule],
   templateUrl: './edit-employee.component.html',
   styleUrl: './edit-employee.component.css'
 })
@@ -99,10 +98,7 @@ export class EditEmployeeComponent {
       this.employeeService.updateEmployee(id, firstName, lastName, identityNumber, startDate, dateOfBirth, isFemale).subscribe(
         () => {
           this.employeeService.refreshEmployee();
-          Swal.fire({
-            title: "Done!",
-            text: "Employee updated successfully!",
-            icon: "success"
+          Swal.fire({ title: "Done!", text: "Employee updated successfully!", icon: "success"
           });
         },
         (error) => {
