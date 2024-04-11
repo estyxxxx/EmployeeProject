@@ -27,7 +27,7 @@ export class HomeComponent {
 
   addEmployee() {
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
-      width: '500px',
+      width: '600px',
       data: { employee: Employee }
     });
   }

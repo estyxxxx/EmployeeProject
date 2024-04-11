@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 import Swal from 'sweetalert2';
 import { EmployeeService } from '../services/employee.service';
 import { AddRoleComponent } from '../add-role/add-role.component';
@@ -18,7 +18,7 @@ import { RoleType } from '../entities/roleType.model';
 @Component({
   selector: 'app-edit-employee',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AddRoleComponent, MatInputModule, MatFormFieldModule, MatSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, AddRoleComponent, MatInputModule, MatFormFieldModule, MatRadioModule],
   templateUrl: './edit-employee.component.html',
   styleUrl: './edit-employee.component.css'
 })
@@ -75,7 +75,7 @@ export class EditEmployeeComponent {
   }
   getTypes()
   {
-    this.roleTypeService.getTypes().subscribe( {
+    this.roleTypeService.types$.subscribe( {
       next: (res) => {
         this.types = res;
       },
@@ -97,7 +97,7 @@ export class EditEmployeeComponent {
       const isFemale = this.editForm.controls['isFemale'].value;
       this.employeeService.updateEmployee(id, firstName, lastName, identityNumber, startDate, dateOfBirth, isFemale).subscribe(
         () => {
-          this.employeeService.refreshEmployee();
+          this.employeeService.refreshEmployees();
           Swal.fire({ title: "Done!", text: "Employee updated successfully!", icon: "success"
           });
         },

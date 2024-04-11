@@ -3,33 +3,32 @@
         <mat-form-field appearance="fill" class="position-field">
             <mat-label>Select Role</mat-label>
             <mat-select formControlName="roleTypeId" class="position-select">
-              <mat-option *ngFor="let role of types" [value]="role.id">
-                {{ role.type }}
-              </mat-option>
+                <mat-option *ngFor="let role of types" [value]="role.id">
+                    {{ role.type }}
+                </mat-option>
             </mat-select>
-          </mat-form-field>
-          <ng-container *ngIf="isClicked && addForm.controls['roleTypeId'].errors as roleTypeIdError">
+        </mat-form-field>
+        <ng-container *ngIf="isClicked && addForm.controls['roleTypeId'].errors as roleTypeIdError">
             <p class="error-message" *ngIf="roleTypeIdError['required']">Please select a role type</p>
         </ng-container>
-        <div class="form-group">
-              <input type="date" class="form-control" placeholder="Entry Date" formControlName="entryDate">
-            <ng-container *ngIf="isClicked && addForm.controls['entryDate'].errors as entryDateError">
-                <p class="error-message" *ngIf="entryDateError['required']">This field is required</p>
-            </ng-container>
-        </div>
-    </div>
-    <div class="form-group">
-        <label>Manager:</label><br>
-        <label> <input type="radio" formControlName="isManager" [value]="0"> Yes
-        </label>
-        <br />
-        <label>
-            <input type="radio" formControlName="isManager" [value]="1"> No
-        </label>
-        <ng-container *ngIf="isClicked && addForm.controls['isManager'].errors as isManagerError">
-            <p class="error-message" *ngIf="isManagerError['required']">Please select</p>
+        <!-- <mat-form-field>
+            <input matInput [matDatepicker]="entryDatePicker" placeholder="Entry Date" formControlName="entryDate">
+            <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #entryDatePicker></mat-datepicker>
+        </mat-form-field> -->
+        <input type="date" class="form-control" placeholder="Entry Date" formControlName="entryDate">
+        <ng-container *ngIf="isClicked && addForm.controls['entryDate'].errors as entryDateError">
+            <p class="error-message" *ngIf="entryDateError['required']">This field is required</p>
         </ng-container>
     </div>
+    <label>Manager:</label><br>
+    <mat-radio-group formControlName="isManager">
+        <mat-radio-button color="primary" [value]="0">Yes</mat-radio-button>
+        <mat-radio-button color="primary" [value]="1">No</mat-radio-button>
+    </mat-radio-group>
+    <ng-container *ngIf="isClicked && addForm.controls['isManager'].errors as isManagerError">
+        <p class="error-message" *ngIf="isManagerError['required']">Please select</p>
+    </ng-container>
     <div mat-dialog-actions>
         <button class="button-5" type="submit">Add</button>
         <button class="button-5" (click)="cancel()">Cancel</button>

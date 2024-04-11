@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
 import { Injectable } from "@angular/core";
 import { Employee } from "../entities/employee.model";
 import { RolePostModel } from "../entities/rolePostModel.model";
@@ -12,7 +12,7 @@ export class EmployeeService {
   roles: RolePostModel[] = [];
 
   constructor(private http: HttpClient) { 
-    this.refreshEmployee();
+    this.refreshEmployees();
   }
 
   private employeesSubject: BehaviorSubject<Employee[]> = new BehaviorSubject<Employee[]>([]);
@@ -56,11 +56,6 @@ export class EmployeeService {
       return this.http.put<void>(url, employee);
     }
   }
-  refreshEmployee() {
-    this.getEmployees().subscribe(employees => {
-      this.employeesSubject.next(employees);
-    });
-  }
   addRole(roleTypeId: number, entryDate : Date, isManager: boolean, employeeId: number) {
     const roleData = {
       roleTypeId: roleTypeId,
@@ -68,6 +63,12 @@ export class EmployeeService {
       isManager: isManager, 
       employeeId: employeeId
     };
+    console.log(roleData)
     this.roles.push(roleData);
+  }
+  refreshEmployees() {
+    this.getEmployees().subscribe(employees => {
+      this.employeesSubject.next(employees);
+    });
   }
 }

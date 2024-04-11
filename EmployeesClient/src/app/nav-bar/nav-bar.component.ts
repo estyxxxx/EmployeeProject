@@ -28,13 +28,9 @@ export class NavBarComponent {
       width: '500px'
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.saveLogin();
+      this.isLogin = Boolean(localStorage.getItem('isLogin'));
+      window.location.reload();
     });
-  }
-  saveLogin()
-  {
-    this.isLogin = Boolean(localStorage.getItem('isLogin'));
-    window.location.reload();
   }
   logout()
   {

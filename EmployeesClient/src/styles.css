@@ -1,19 +1,5 @@
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.addOrEdit-employee-overlay {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
-  width: 70vw;
-}
 
 button {
   border: none;
@@ -37,7 +23,7 @@ button {
   padding: 10px;
 }
 
-.form-row{
+.form-row {
   display: flex;
   margin: 32px 0;
 }
@@ -46,6 +32,18 @@ button {
   color: #dc3545;
   margin-top: 5px;
   font-size: 14px;
+}
+
+label {
+  color: white;
+  font-size: 16px;
+}
+.add-role {
+  border: 2px solid white;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  color: white;
 }
 
 .button-5 {

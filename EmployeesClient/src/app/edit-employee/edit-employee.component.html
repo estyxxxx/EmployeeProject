@@ -1,51 +1,53 @@
 <form [formGroup]="editForm" class="the-form">
     <div mat-dialog-content>
-            <div class="form-row">
-                <mat-form-field class="form-control">
-                    <mat-label>firstName</mat-label>
-                    <input matInput formControlName="firstName">
-                </mat-form-field>
-                <ng-container *ngIf="isClicked && editForm.controls['firstName'].errors as firstNameError">
-                    <p class="error-message" *ngIf="firstNameError['required']">This field is required</p>
-                </ng-container>
-                <mat-form-field class="form-control">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput formControlName="lastName">
-                </mat-form-field>
-                <ng-container *ngIf="isClicked && editForm.controls['lastName'].errors as lastNameError">
-                    <p class="error-message" *ngIf="lastNameError['required']">This field is required</p>
-                </ng-container>
-            </div>
+        <div class="form-row">
             <mat-form-field class="form-control">
-                <mat-label>Identity Number</mat-label>
-                <input matInput formControlName="identityNumber">
+                <mat-label>firstName</mat-label>
+                <input matInput formControlName="firstName">
             </mat-form-field>
-            <ng-container *ngIf="isClicked && editForm.controls['identityNumber'].errors as identityNumberError">
-                <p class="error-message" *ngIf="identityNumberError['required']">This field is required</p>
-                <p class="error-message" *ngIf="identityNumberError['pattern']">This field must be exactly 9 characters long
-                </p>
+            <ng-container *ngIf="isClicked && editForm.controls['firstName'].errors as firstNameError">
+                <p class="error-message" *ngIf="firstNameError['required']">This field is required</p>
             </ng-container>
-            <div class="form-row">
-                <input type="date" class="form-control" formControlName="dateOfBirth">
-                <ng-container *ngIf="isClicked && editForm.controls['dateOfBirth'].errors as dateOfBirthError">
-                    <p class="error-message" *ngIf="dateOfBirthError['required']">This field is required</p>
-                </ng-container>
-                <input type="date" class="form-control" formControlName="startDate">
-                <ng-container *ngIf="isClicked && editForm.controls['startDate'].errors as startDateError">
-                    <p class="error-message" *ngIf="startDateError['required']">This field is required</p>
-                </ng-container>
-            </div>
-            <label>Gender:</label><br>
-            <label><input type="radio" [value]="true" [checked]="this.employee?.isFemale" formControlName="isFemale">Female</label><br />
-            <label><input type="radio" [value]="false" [checked]="!this.employee?.isFemale" formControlName="isFemale">Male</label><br />
-            <ng-container *ngIf="isClicked && editForm.controls['isFemale'].errors as isFemaleError">
-                <p class="error-message" *ngIf="isFemaleError['required']">Please select a gender</p>
+            <mat-form-field class="form-control">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
+            <ng-container *ngIf="isClicked && editForm.controls['lastName'].errors as lastNameError">
+                <p class="error-message" *ngIf="lastNameError['required']">This field is required</p>
             </ng-container>
-        <div *ngFor="let type of filteredTypes">
-            <p>{{type.type}}</p>
         </div>
-    </div>
-        <button type="button" class="button-5" (click)="addRole()">Add Role</button>
+        <mat-form-field class="form-control">
+            <mat-label>Identity Number</mat-label>
+            <input matInput formControlName="identityNumber">
+        </mat-form-field>
+        <ng-container *ngIf="isClicked && editForm.controls['identityNumber'].errors as identityNumberError">
+            <p class="error-message" *ngIf="identityNumberError['required']">This field is required</p>
+            <p class="error-message" *ngIf="identityNumberError['pattern']">This field must be exactly 9 characters long
+            </p>
+        </ng-container>
+        <div class="form-row">
+            <input type="date" class="form-control" formControlName="dateOfBirth">
+            <ng-container *ngIf="isClicked && editForm.controls['dateOfBirth'].errors as dateOfBirthError">
+                <p class="error-message" *ngIf="dateOfBirthError['required']">This field is required</p>
+            </ng-container>
+            <input type="date" class="form-control" formControlName="startDate">
+            <ng-container *ngIf="isClicked && editForm.controls['startDate'].errors as startDateError">
+                <p class="error-message" *ngIf="startDateError['required']">This field is required</p>
+            </ng-container>
+        </div>
+        <label>Gender:</label><br>
+        <mat-radio-group formControlName="isFemale">
+            <mat-radio-button color="primary" [value]="true">Female</mat-radio-button>
+            <mat-radio-button color="primary" [value]="false">Male</mat-radio-button>
+        </mat-radio-group>
+        <ng-container *ngIf="isClicked && editForm.controls['isFemale'].errors as isFemaleError">
+            <p class="error-message" *ngIf="isFemaleError['required']">Please select a gender</p>
+        </ng-container>
+        <div class="add-role">
+            <div *ngFor="let type of filteredTypes"><li>{{type.type}}</li></div><br>
+            <button type="button" class="button-5" (click)="addRole()">Add Role</button>
+        </div>
+    </div><br>
     <div mat-dialog-actions>
         <button (click)="save()" class="button-5">Save Changes</button>
         <button (click)="cancel()" class="button-5">Cancel</button>

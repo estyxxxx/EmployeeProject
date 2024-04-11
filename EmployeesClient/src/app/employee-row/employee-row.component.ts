@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { Employee } from '../entities/employee.model';
@@ -31,7 +31,7 @@ export class EmployeeRowComponent {
       () => {
         Swal.fire({ title: "A deletion has occurred", text: `Employee ${employee.id} deleted successfully!`, icon: "success"
         });
-        this.employeeService.refreshEmployee();
+        this.employeeService.refreshEmployees();
       },
       (error) => {
         console.error('Error occurred while deleting employee:', error);
@@ -40,7 +40,7 @@ export class EmployeeRowComponent {
   }
   editEmployee() {
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
-      width: '500px',
+      width: '600px',
       data: { employee: this.employee }
     });
   }
