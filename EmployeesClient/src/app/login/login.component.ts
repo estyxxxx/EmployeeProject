@@ -38,10 +38,8 @@ export class LoginComponent {
         .pipe(
           tap(response => {
             const token = response.token;
-            console.log("token", token);
             this.sendTokenToServer(token);
             sessionStorage.setItem('token', token);
-            Swal.fire({ icon: "success", title: "Done!", text: "You've logged in successfully!" });
             this.isSucceed = true;
             localStorage.setItem('isLogin', 'true');
             this.saveEvent.emit();

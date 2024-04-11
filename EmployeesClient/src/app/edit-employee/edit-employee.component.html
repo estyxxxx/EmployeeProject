@@ -1,55 +1,4 @@
-<!-- <form [formGroup]="editForm" (ngSubmit)="save()" class="the-form">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
-        <ng-container *ngIf="isClicked && editForm.controls['firstName'].errors as firstNameError">
-            <p class="error-message" *ngIf="firstNameError['required']">This field is required</p>
-        </ng-container>
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
-        <ng-container *ngIf="isClicked && editForm.controls['lastName'].errors as lastNameError">
-            <p class="error-message" *ngIf="lastNameError['required']">This field is required</p>
-        </ng-container>
-    </div>
-    <br>
-    <div class="form-group">
-        <input type="number" class="form-control" placeholder="Identity Number" formControlName="identityNumber">
-        <ng-container *ngIf="isClicked && editForm.controls['identityNumber'].errors as identityNumberError">
-            <p class="error-message" *ngIf="identityNumberError['required']">This field is required</p>
-            <p class="error-message" *ngIf="identityNumberError['pattern']">This field must be exactly 9 characters long</p>
-        </ng-container>
-    </div>
-    <br>
-    <div class="form-group">
-        <input type="date" class="form-control" placeholder="Start Date" formControlName="startDate">
-        <ng-container *ngIf="isClicked && editForm.controls['startDate'].errors as startDateError">
-            <p class="error-message" *ngIf="startDateError['required']">This field is required</p>
-        </ng-container>
-    </div>
-    <br>
-    <div class="form-group">
-        <input type="date" class="form-control" placeholder="Date Of Birth" formControlName="dateOfBirth">
-        <ng-container *ngIf="isClicked && editForm.controls['dateOfBirth'].errors as dateOfBirthError">
-            <p class="error-message" *ngIf="dateOfBirthError['required']">This field is required</p>
-        </ng-container>
-    </div>
-    <div class="form-group">
-        Gender:<br />
-        <input type="radio" [value]="false" [checked]="!this.employee?.isFemale" formControlName="isFemale">Male<br />
-        <input type="radio" [value]="true" [checked]="this.employee?.isFemale" formControlName="isFemale">Female<br />
-        <ng-container *ngIf="isClicked && editForm.controls['isFemale'].errors as isFemaleError">
-            <p class="error-message" *ngIf="isFemaleError['required']">Please select a gender</p>
-        </ng-container>
-    </div>
-    <div *ngFor="let type of filteredTypes"><p>{{type.type}}</p></div>
-    <button type="button" class="button-5" (click)="addRole()" [disabled]="isRoleOpen">Add Role</button>
-    <div class="addOrEdit-employee-overlay" *ngIf="isRoleOpen">
-        <app-add-role [types]="types" [employeeId]="employee?.id || 0" (saveEvent)="saveRole()" />
-    </div>
-    <button type="submit" class="button-5">Save Changes</button>
-    <button type="button" (click)="cancel()" class="button-5">Cancel</button>
-</form> -->
-<form [formGroup]="editForm" (ngSubmit)="save()" class="the-form">
+<form [formGroup]="editForm" class="the-form">
     <div mat-dialog-content>
             <div class="form-row">
                 <mat-form-field class="form-control">
@@ -86,11 +35,9 @@
                     <p class="error-message" *ngIf="startDateError['required']">This field is required</p>
                 </ng-container>
             </div>
-            Gender:<br />
-            <input type="radio" [value]="true" [checked]="this.employee?.isFemale"
-                formControlName="isFemale">Female<br />
-            <input type="radio" [value]="false" [checked]="!this.employee?.isFemale"
-                formControlName="isFemale">Male<br />
+            <label>Gender:</label><br>
+            <label><input type="radio" [value]="true" [checked]="this.employee?.isFemale" formControlName="isFemale">Female</label><br />
+            <label><input type="radio" [value]="false" [checked]="!this.employee?.isFemale" formControlName="isFemale">Male</label><br />
             <ng-container *ngIf="isClicked && editForm.controls['isFemale'].errors as isFemaleError">
                 <p class="error-message" *ngIf="isFemaleError['required']">Please select a gender</p>
             </ng-container>
@@ -98,12 +45,9 @@
             <p>{{type.type}}</p>
         </div>
     </div>
-        <button type="button" class="button-5" (click)="addRole()" [disabled]="isRoleOpen">Add Role</button>
-        <!-- <div class="addOrEdit-employee-overlay" *ngIf="isRoleOpen">
-        <app-add-role [types]="types" [employeeId]="employee?.id || 0" (saveEvent)="saveRole()" />
-    </div> -->
+        <button type="button" class="button-5" (click)="addRole()">Add Role</button>
     <div mat-dialog-actions>
-        <button type="submit" class="button-5">Save Changes</button>
+        <button (click)="save()" class="button-5">Save Changes</button>
         <button (click)="cancel()" class="button-5">Cancel</button>
     </div>
 </form>

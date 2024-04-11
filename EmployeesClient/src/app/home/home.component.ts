@@ -40,7 +40,6 @@ export class HomeComponent {
   }
   saveAddEmployee(): void {
     this.isOpen = false; 
-    console.log("comming here", this.isOpen);
   }
   addRoleType()
   {

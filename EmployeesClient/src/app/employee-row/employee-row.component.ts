@@ -15,16 +15,11 @@ import { MatDialog } from '@angular/material/dialog';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class EmployeeRowComponent {
-  
-  isOpen: boolean = false;
 
   @Input()
   employee!: Employee;
   @Input()
   isLogin!: Boolean;
-
-  @Output()
-  saveEvent: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private employeeService: EmployeeService, private dialog: MatDialog
@@ -32,7 +27,6 @@ export class EmployeeRowComponent {
 
   delete(employee: Employee) {
     employee.isActive = false;
-    console.log("employee", employee)
     this.employeeService.updateActivity(employee).subscribe(
       () => {
         Swal.fire({
@@ -40,7 +34,6 @@ export class EmployeeRowComponent {
           text: `Employee ${employee.id} deleted successfully!`,
           icon: "success"
         });
-        this.saveEvent.emit();
         this.employeeService.refreshEmployee();
       },
       (error) => {
@@ -49,18 +42,9 @@ export class EmployeeRowComponent {
     );
   }
   editEmployee() {
-    this.isOpen = true;
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
       width: '500px',
-      data: { employee: Employee }
+      data: { employee: this.employee }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.saveEditEmployee();
-    });
-  }
-  saveEditEmployee() {
-    this.isOpen = false;
-    console.log("save accured2");
   }
 }

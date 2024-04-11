@@ -22,13 +22,6 @@ export class AddRoleComponent {
   isClicked: boolean = false;
   types!: RoleType[]; 
   employeeId!: number
-  // @Input()
-  // employeeId!: number;
-  // @Input()
-  // types: RoleType[] = [];
-  
-  @Output()
-  saveEvent: EventEmitter<void> = new EventEmitter<void>();
   
   constructor(
     private employeeService: EmployeeService, public dialogRef: MatDialogRef<AddRoleComponent>, 
@@ -52,13 +45,10 @@ export class AddRoleComponent {
       if (this.addForm.controls['isManager'].value == 1)
         this.tempIsManager = false;
       this.employeeService.addRole(this.addForm.controls['roleTypeId'].value, this.addForm.controls['entryDate'].value, this.tempIsManager, this.employeeId);
-      console.log("add role", this.employeeService.roles);
-      //this.saveEvent.emit();
     }
     this.dialogRef.close();
   }
   cancel() {
-    //this.saveEvent.emit();
     this.dialogRef.close();
   }
 }

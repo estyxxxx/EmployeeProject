@@ -47,7 +47,6 @@ export class EmployeeService {
     {
       const url = 'https://localhost:7272/api/Employee';
       this.roles = [];
-      console.log(employee);
       return this.http.post<void>(url, employee);
     }
     else

@@ -22,7 +22,6 @@ export class RoleService {
       isManager: isManager, 
       employeeId: employeeId
     };
-    console.log(roleData);
     return this.http.post(url, roleData);
   }
 }

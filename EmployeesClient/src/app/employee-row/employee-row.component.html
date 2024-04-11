@@ -2,22 +2,11 @@
 <td>{{ employee.lastName }}</td>
 <td>{{ employee.identityNumber }}</td>
 <td>{{ employee.startDate }}</td>
-<!-- <td><button type="button" class="button" (click)="editEmployee()" *ngIf="isLogin" [disabled]="isOpen">Edit</button></td> -->
-<td *ngIf="isLogin"><button (click)="editEmployee()" [disabled]="isOpen"><lord-icon
-    src="https://cdn.lordicon.com/oqaajvyl.json"
-    trigger="hover"
-    stroke="bold"
-    colors="primary:#4f1091,secondary:#545454"
-    style="width:30px;height:30px;">
+<td *ngIf="isLogin"><button (click)="editEmployee()">
+  <lord-icon src="https://cdn.lordicon.com/oqaajvyl.json" 
+    trigger="hover" stroke="bold" colors="primary:#4f1091,secondary:#545454" style="width:30px;height:30px;">
   </lord-icon></button></td>
-<!-- <td><button type="button" class="button" *ngIf="isLogin" (click)="delete(employee)">Delete</button></td> -->
-<td *ngIf="isLogin"><button (click)="delete(employee)"><lord-icon
-  src="https://cdn.lordicon.com/vlnvqvew.json"
-  trigger="hover"
-  stroke="bold"
-  colors="primary:#4f1091,secondary:#545454"
-  style="width:30px;height:30px;">
+<td *ngIf="isLogin"><button (click)="delete(employee)">
+  <lord-icon src="https://cdn.lordicon.com/vlnvqvew.json"
+    trigger="hover" stroke="bold" colors="primary:#4f1091,secondary:#545454" style="width:30px;height:30px;">
 </lord-icon></button></td>
-<!-- <div class="addOrEdit-employee-overlay" *ngIf="isOpen">
-    <app-edit-employee [employee]="employee" (saveEvent)="saveEditEmployee()" />
-</div> -->

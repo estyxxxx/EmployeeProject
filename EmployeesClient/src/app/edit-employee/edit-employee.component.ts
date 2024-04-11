@@ -27,17 +27,11 @@ export class EditEmployeeComponent {
 
   editForm!: FormGroup;
   tempId = 0;
-  tempIsFemale = true;
-  isRoleOpen: boolean = false;
   isClicked: boolean = false;
   roles: Role[] = [];
   types: RoleType[] = [];
   filteredTypes: RoleType[] = [];
-  // @Input()
   employee?: Employee;
-
-  @Output()
-  saveEvent: EventEmitter<void> = new EventEmitter<void>();
   
   constructor(
     private employeeService: EmployeeService, private roleService: RoleService, private roleTypeService: RoleTypeService, private dialog: MatDialog,
@@ -63,8 +57,6 @@ export class EditEmployeeComponent {
         dateOfBirth: new FormControl(this.employee?.dateOfBirth, Validators.required),
         isFemale: new FormControl(this.employee?.isFemale, Validators.required)
     });
-    console.log("this.employee?.roles", this.employee?.roles)
-    console.log("this.employeeService.roles", this.employeeService.roles)
   }
   getRoles()
   {
@@ -87,7 +79,6 @@ export class EditEmployeeComponent {
     this.roleTypeService.getTypes().subscribe( {
       next: (res) => {
         this.types = res;
-        console.log(this.types);
       },
       error: (err) => { console.error(err); }
     });
@@ -104,10 +95,7 @@ export class EditEmployeeComponent {
       const identityNumber = this.editForm.controls['identityNumber'].value;
       const startDate = this.editForm.controls['startDate'].value;
       const dateOfBirth = this.editForm.controls['dateOfBirth'].value;
-      if (this.editForm.controls['isFemale'].value == 1)
-        this.tempIsFemale = false;
-      const isFemale = this.tempIsFemale;
-      console.log("isFemale", isFemale);
+      const isFemale = this.editForm.controls['isFemale'].value;
       this.employeeService.updateEmployee(id, firstName, lastName, identityNumber, startDate, dateOfBirth, isFemale).subscribe(
         () => {
           this.employeeService.refreshEmployee();
@@ -116,7 +104,6 @@ export class EditEmployeeComponent {
             text: "Employee updated successfully!",
             icon: "success"
           });
-          this.saveEvent.emit();
         },
         (error) => {
           console.error('Error occurred while updating employee:', error);
@@ -126,21 +113,13 @@ export class EditEmployeeComponent {
     }
   }
   cancel() {
-    this.saveEvent.emit();
     this.dialogRef.close();
   }
   addRole() {
-    this.isRoleOpen = true;
     const dialogRef = this.dialog.open(AddRoleComponent, {
       width: '500px',
       data: { types: this.types, employeeId: this.employee?.id || 0 }
     });
-    dialogRef.afterClosed().subscribe(result => {
-      this.saveRole();
-    });
-  }
-  saveRole() {
-    this.isRoleOpen = false;
   }
 }
 
