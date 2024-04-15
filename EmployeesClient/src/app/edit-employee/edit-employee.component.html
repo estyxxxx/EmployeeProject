@@ -43,10 +43,11 @@
         <ng-container *ngIf="isClicked && editForm.controls['isFemale'].errors as isFemaleError">
             <p class="error-message" *ngIf="isFemaleError['required']">Please select a gender</p>
         </ng-container>
-        <div class="add-role">
+        <!-- <div class="add-role">
             <div *ngFor="let type of filteredTypes"><li>{{type.type}}</li></div><br>
             <button type="button" class="button-5" (click)="addRole()">Add Role</button>
-        </div>
+        </div> -->
+        <br><button type="button" class="button-5" (click)="addRole()">Add Role</button>
     </div><br>
     <div mat-dialog-actions>
         <button (click)="save()" class="button-5">Save Changes</button>
