@@ -35,6 +35,7 @@ export class EmployeeRowComponent {
       },
       (error) => {
         console.error('Error occurred while deleting employee:', error);
+        Swal.fire({ icon: "error", title: "Error", text: "Failed to delete the employee!" });
       }
     );
   }

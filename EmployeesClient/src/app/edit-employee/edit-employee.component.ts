@@ -103,6 +103,7 @@ export class EditEmployeeComponent {
         },
         (error) => {
           console.error('Error occurred while updating employee:', error);
+          Swal.fire({ icon: "error", title: "Error", text: "Failed to update employee!" });
         }
       );
       this.dialogRef.close();

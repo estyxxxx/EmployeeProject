@@ -40,6 +40,7 @@ export class AddRoleTypeComponent {
         },
         (error) => {
           console.error('Error occurred while add role type:', error);
+          Swal.fire({ icon: "error", title: "Error", text: "Failed to add role!" });
         }
       );
       this.dialogRef.close();
