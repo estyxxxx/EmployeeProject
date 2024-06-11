@@ -1,38 +1,42 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule  } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialog } from '@angular/material/dialog';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { EmployeeRowComponent } from '../employee-row/employee-row.component';
 import { Employee } from '../entities/employee.model';
 import { EmployeeService } from '../services/employee.service';
+import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
+import { AddRoleTypeComponent } from '../add-role-type/add-role-type.component';
 
 @Component({
   selector: 'app-table',
-  imports: [CommonModule, EmployeeRowComponent, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, EmployeeRowComponent, ReactiveFormsModule, MatFormFieldModule, MatInputModule, EditEmployeeComponent, AddRoleTypeComponent],
   standalone: true,
   templateUrl: './table.component.html',
-  styleUrl: './table.component.css'
+  styleUrl: './table.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TableComponent {
 
   public employees: Employee[] = [];
   public filteredEmployees: Employee[] = [];
   public filterForm!: FormGroup;
-  @Input()
   isLogin!: Boolean;
 
   constructor(
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService, private dialog: MatDialog
   ) { }
   
   ngOnInit() {
-
+    this.isLogin = localStorage.getItem('isLogin') === 'true';
     this.filterForm = new FormGroup({
       search: new FormControl('')
     });
+    
 
     this.subscribeToFormChanges();
 
@@ -42,6 +46,19 @@ export class TableComponent {
         this.filterEmployees();
       },
       error: (err) => { console.error(err); }
+    });
+  }
+
+  addEmployee() {
+    const dialogRef = this.dialog.open(EditEmployeeComponent, {
+      width: '600px',
+      data: { employee: Employee }
+    });
+  }
+  addRoleType()
+  {
+    const dialogRef = this.dialog.open(AddRoleTypeComponent, {
+      width: '500px'
     });
   }
   private subscribeToFormChanges() {

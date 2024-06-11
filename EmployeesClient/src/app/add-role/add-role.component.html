@@ -11,6 +11,12 @@
         <ng-container *ngIf="isClicked && addForm.controls['roleTypeId'].errors as roleTypeIdError">
             <p class="error-message" *ngIf="roleTypeIdError['required']">Please select a role type</p>
         </ng-container>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Entry Date</mat-label>
+            <input matInput [matDatepicker]="entryDatePicker" placeholder="Entry Date" formControlName="entryDate">
+            <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #entryDatePicker></mat-datepicker>
+        </mat-form-field> -->
         <!-- <mat-form-field>
             <input matInput [matDatepicker]="entryDatePicker" placeholder="Entry Date" formControlName="entryDate">
             <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>

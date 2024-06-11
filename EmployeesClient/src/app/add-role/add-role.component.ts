@@ -1,6 +1,8 @@
 import { Component, Inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,10 +11,22 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EmployeeService } from '../services/employee.service';
 import { RoleType } from '../entities/roleType.model';
+
 @Component({
   selector: 'app-add-role',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatRadioModule, MatDatepickerModule],
+  // providers: [
+  //   { provide: MAT_DATE_FORMAT, useValue: 'MM/DD/YYYY' }, // Optional: Set default date format (optional)
+  //   { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] }
+  // ]
+  // providers: [
+  //   { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] }
+  // ],
+  providers: [
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' } // Replace 'en-GB' with your desired locale
+  ],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.css'
 })

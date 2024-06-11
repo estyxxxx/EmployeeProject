@@ -12,3 +12,12 @@ table {
   tr:hover {
     background-color: #a0a0a0;
   }
+
+  div{
+    display: flex;
+    justify-content: center;
+  }
+
+  button{
+    margin: 5px;
+  }
