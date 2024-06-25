@@ -59,7 +59,8 @@ The database consists of three main tables:
 ![User View](user_view.png)
 ![Admin View](admin_view.png)-->
 <img width="947" alt="צילום מסך 2024-06-25 184559" src="https://github.com/estyxxxx/EmployeeProject/assets/148995898/ac094851-6fb4-4a04-b3d6-6247be77c58d">
-Will reveal soon...
+<br />
+The rest will be revealed soon...
 
 ## Contributors
 
