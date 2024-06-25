@@ -1,4 +1,4 @@
-# Employee Management System
+<img width="947" alt="צילום מסך 2024-06-25 184559" src="https://github.com/estyxxxx/EmployeeProject/assets/148995898/ac094851-6fb4-4a04-b3d6-6247be77c58d"><img width="947" alt="image" src="https://github.com/estyxxxx/EmployeeProject/assets/148995898/d07996a5-b6e1-4686-b86a-73fed2335fbc"># Employee Management System
 
 ## Description
 
@@ -43,6 +43,7 @@ The database consists of three main tables:
 2. **Position Table**: Contains position details (position name, entry date, managerial position).
 3. **Job Type Table**: Contains job names.
 
+
 ## Usage
 
 1. Clone the repository.
@@ -57,6 +58,7 @@ The database consists of three main tables:
 <!--![Login Screen](login.png)
 ![User View](user_view.png)
 ![Admin View](admin_view.png)-->
+![Uploading צילום מסך 2024-06-25 184559.png…]()
 Will reveal soon...
 
 ## Contributors
