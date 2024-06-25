@@ -54,12 +54,11 @@ The database consists of three main tables:
 6. Log in to access the user or admin view.
 
 ## Screenshots
-
 <!--![Login Screen](login.png)
 ![User View](user_view.png)
 ![Admin View](admin_view.png)-->
 <img width="947" alt="צילום מסך 2024-06-25 184559" src="https://github.com/estyxxxx/EmployeeProject/assets/148995898/ac094851-6fb4-4a04-b3d6-6247be77c58d">
-<br />
+ 
 The rest will be revealed soon...
 
 ## Contributors
